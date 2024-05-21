@@ -46,7 +46,11 @@ void createNewTask(){
     );
   } ,);
 }
-
+void deleteTask(int index){
+  setState(() {
+    todostuff.removeAt(index);
+  });
+}
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -65,7 +69,7 @@ void createNewTask(){
       body:ListView.builder(
         itemCount: todostuff.length,
         itemBuilder: (context, index){
-          return Todotile(taskName: todostuff[index][0], taskCompleted: todostuff[index][1], onChanged: (value) => checkboxchange(value, index),);
+          return Todotile(taskName: todostuff[index][0], taskCompleted: todostuff[index][1], onChanged: (value) => checkboxchange(value, index),deleteFunction: (context)=>deleteTask(index),);
         },
       )
     
